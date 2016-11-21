@@ -45,20 +45,29 @@ eureka.client:
     # fetch all 5 seconds the delta from the service registry
     registry-fetch-interval-seconds: 5
 
-####### Zone Server Client (Ribbon)
-bikessupplier:
-  ribbon:
-    MaxAutoRetries: 0
-    MaxAutoRetriesNextServer: 1
-    OkToRetryOnAllOperations: true
-    ConnectTimeout: 1000
-    ReadTimeout: 2000
-    UseIPAddrForServer: true
-    SocketPoolMaxTotal: 10
-    SocketPoolMinIdlePerKey: 2
-    SocketPoolTestOnBorrow: true
-    SocketPoolTestWhileIdle: true
-    SocketPoolMaxWaitMillis: 2000
-    SocketPoolTimeBetweenEvictionRunsMillis: 30000
-    SocketPoolMinEvictableIdleTimeMillis: 45000
-
+#brakessupplier:
+#  ribbon:
+#    MaxAutoRetries: 0
+#    MaxAutoRetriesNextServer: 1
+#    OkToRetryOnAllOperations: true
+#    ConnectTimeout: 1000
+#    ReadTimeout: 2000
+#    UseIPAddrForServer: true
+#    SocketPoolMaxTotal: 10
+#    SocketPoolMinIdlePerKey: 2
+#    SocketPoolTestOnBorrow: true
+#    SocketPoolTestWhileIdle: true
+#    SocketPoolMaxWaitMillis: 2000
+#    SocketPoolTimeBetweenEvictionRunsMillis: 30000
+#    SocketPoolMinEvictableIdleTimeMillis: 45000
+#
+#hystrix:
+#  command:
+#    supplierBrake:
+#      execution:
+#        isolation:
+#          thread:
+#            timeoutInMilliseconds: 2500
+#  threadpool:
+#    default:
+#      coreSize: 1

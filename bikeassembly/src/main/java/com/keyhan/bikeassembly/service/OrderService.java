@@ -44,18 +44,18 @@ public class OrderService {
 //        }
         Brake brake = null;
         try {
-            ServiceInstance instance = loadBalancerClient.choose("BRAKESSUPPLIER");
-
-            List<ServiceInstance> serviceInstances = discoveryClient.getInstances("BRAKESSUPPLIER");
-            
-            for (ServiceInstance serviceInstance : serviceInstances) {
-                System.out.println("serviceInstance = " + serviceInstance);
-            }
-            
-            System.out.println("HOST  ====== " + instance.getHost());
-            URI uri = instance.getUri();
-            //String url = uri.
-            System.out.println("URI == " + uri);
+//            ServiceInstance instance = loadBalancerClient.choose("BRAKESSUPPLIER");
+//
+//            List<ServiceInstance> serviceInstances = discoveryClient.getInstances("BRAKESSUPPLIER");
+//
+//            for (ServiceInstance serviceInstance : serviceInstances) {
+//                System.out.println("serviceInstance = " + serviceInstance);
+//            }
+//
+//            System.out.println("HOST  ====== " + instance.getHost());
+//            URI uri = instance.getUri();
+//            //String url = uri.
+//            System.out.println("URI == " + uri);
             //brakes = new RestTemplate().postForEntity(uri.)
 
             brake = supplierBrake(createBrakeOrder(incomingOrder));
@@ -88,13 +88,13 @@ public class OrderService {
     }
 
     @HystrixCommand(fallbackMethod = "localBrake")
-    @HystrixProperty(name="circuitBreaker.errorThresholdPercentage", value = "1")
     public Brake supplierBrake(BrakeOrder brakeOrder) {
+
         return brakeClient.orderBrake(brakeOrder);
     }
 
     public Brake localBrake(BrakeOrder brakeOrder) {
-        return Brake.builder().model("LOCALCRAP")
+        return Brake.builder().model("007")
                 .manufacturer("HASSES")
                 .brakeType(BrakeType.Foot).build();
     }

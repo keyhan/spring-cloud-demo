@@ -11,10 +11,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
 
-@FeignClient("BRAKESSUPPLIER")
+@FeignClient(serviceId="BRAKESSUPPLIER")
 public interface BrakeClient {
 
-    @HystrixCommand(fallbackMethod = "orderBrake2")
     @RequestMapping(method = RequestMethod.POST, path="/brake",consumes= MediaType.APPLICATION_JSON_VALUE
             , produces = MediaType.APPLICATION_JSON_VALUE)
     public Brake orderBrake(@RequestBody BrakeOrder brakeOrder);
